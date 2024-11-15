@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import DashBoard from "./pages/DashBoard";
 import FoodDetails from "./pages/FoodDetailsPage ";
 import CartPage from "./pages/CartPage";
+import Signup from "./pages/Signup";
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
@@ -23,13 +24,17 @@ const router = createBrowserRouter([
       { path: "cart", element: <CartPage /> },
 
 
+
+
       { path: "profile", element: <Profile /> },
     
       { path: "/food/:foodId", element: <FoodDetails/> },
 
     ],
   },
-  { path: "/login", element: <Login /> }, // Login page (outside of layout)
+  { path: "/login", element: <Login /> },
+  { path: "signup", element: <Signup /> },
+  // Login page (outside of layout)
 ]);
 
 const App = () => {
