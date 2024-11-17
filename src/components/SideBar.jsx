@@ -22,8 +22,12 @@ const Sidebar = () => {
     name: "Menna",
   };
 
+ 
+
   const logout = () => {
-    console.log("Logged out");
+    localStorage.removeItem("token"); // Remove token from localStorage
+    setUser(false); // Set user as logged out
+    setMessage("You have been logged out"); // Optional feedback message
   };
 
   return (
@@ -123,7 +127,6 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      {/* Log Out Button at the Bottom */}
       {user && (
         <button
           onClick={logout}
