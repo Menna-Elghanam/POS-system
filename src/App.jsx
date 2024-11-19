@@ -2,13 +2,12 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./pages/HomePage";
-import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import DashBoard from "./pages/DashBoard";
-import FoodDetails from "./pages/FoodDetailsPage ";
-import CartPage from "./pages/CartPage";
+// import FoodDetails from "./pages/FoodDetailsPage ";
 import Signup from "./pages/Signup";
+import OrdersPage from "./pages/OrdersPage";
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
@@ -19,16 +18,15 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> }, // Home without search
       { path: "search/:searchTerm", element: <Home /> }, // Home with search term
-      { path: "orders", element: <Orders /> },
       { path: "dashboard", element: <DashBoard /> },
-      { path: "cart", element: <CartPage /> },
+      { path: "orders", element: <OrdersPage /> },
 
 
 
 
       { path: "profile", element: <Profile /> },
     
-      { path: "/food/:foodId", element: <FoodDetails/> },
+      // { path: "/food/:foodId", element: <FoodDetails/> },
 
     ],
   },

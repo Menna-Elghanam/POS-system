@@ -1,39 +1,46 @@
+
+
+
+
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { FaHome, FaUser, FaListAlt, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 
-import {
-  FaHome,
-  FaShoppingCart,
-  FaUser,
-  FaListAlt,
-  FaSignOutAlt,
-  FaUtensils,
-  FaTachometerAlt, // Dashboard Icon
-} from "react-icons/fa";
-
 const Sidebar = () => {
+  const [user, setUser] = useState(null);
   const { getCartItemsCount } = useCart();
 
-  // const cart = {
-  //   totalCount: 10,
-  // };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("No token found");
 
-  const user = {
-    name: "Menna",
-  };
+        const response = await axios.get("http://localhost:5000/api/auth/user", {
+          headers: { Authorization: token },
+        });
 
- 
+        setUser(response.data.user);
+      } catch (error) {
+        console.error("Failed to fetch user info:", error);
+        setUser(null);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("token"); // Remove token from localStorage
-    setUser(false); // Set user as logged out
-    setMessage("You have been logged out"); // Optional feedback message
+    setUser(null); // Set user as logged out
+    // You can optionally navigate to the login page
   };
 
   return (
-    <aside className="w-64 bg-white text-gray-800 h-screen fixed p-6 flex flex-col justify-between shadow-xl border-r border-gray-200 ">
+    <aside className="w-64 bg-white text-gray-800 h-screen fixed p-6 flex flex-col justify-between shadow-xl border-r border-gray-200">
       <nav className="space-y-8">
-        {/* App Title */}
         <div className="text-xl font-bold mb-8">
           <Link
             to="/"
@@ -43,14 +50,13 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        {/* User Links */}
         <ul className="space-y-6">
           {user ? (
             <li className="flex items-center gap-3 px-2 py-3 bg-gray-100 rounded-lg">
               <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center">
-                <span className="font-semibold">{user.name[0]}</span>
+                <span className="font-semibold">{user.username[0]}</span>
               </div>
-              <span className="text-gray-700">{user.name}</span>
+              <span className="text-gray-700">{user.username}</span>
             </li>
           ) : (
             <li>
@@ -64,7 +70,6 @@ const Sidebar = () => {
             </li>
           )}
 
-          {/* Dashboard Link */}
           <li>
             <Link
               to="/dashboard"
@@ -75,7 +80,6 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          {/* Home Link */}
           <li>
             <Link
               to="/"
@@ -86,15 +90,13 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          {/* Cart Link */}
-
           <li className="relative">
             <Link
-              to="/cart"
+              to="/orders"
               className="flex items-center gap-2 text-gray-500 hover:text-gray-800 transition-colors duration-300"
             >
-              <FaShoppingCart className="text-lg" />
-              <span>Cart</span>
+              <FaListAlt className="text-lg" />
+              <span>Orders</span>
               {getCartItemsCount() > 0 && (
                 <span className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center text-xs font-bold bg-red-500 text-white rounded-full">
                   {getCartItemsCount()}
@@ -103,7 +105,6 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          {/* Profile Link */}
           <li>
             <Link
               to="/profile"
@@ -111,17 +112,6 @@ const Sidebar = () => {
             >
               <FaUser className="text-lg" />
               <span>Profile</span>
-            </Link>
-          </li>
-
-          {/* Orders Link */}
-          <li>
-            <Link
-              to="/orders"
-              className="flex items-center gap-2 text-gray-500 hover:text-gray-800 transition-colors duration-300"
-            >
-              <FaListAlt className="text-lg" />
-              <span>Orders</span>
             </Link>
           </li>
         </ul>

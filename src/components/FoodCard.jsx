@@ -43,18 +43,18 @@ const FoodCard = ({ food }) => {
         </div>
 
         <div className="flex justify-between items-center mt-4">
-          <Link
+          {/* <Link
             to={`/food/${food.id}`}
             className="text-blue-600 hover:text-blue-700 text-sm"
           >
             View Details
-          </Link>
+          </Link> */}
           <button
             onClick={() => addToCart(food)}
             className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
           >
             <FaShoppingCart className="text-sm" />
-            <span>Add to Cart</span>
+            <span>Place Order  </span>
           </button>
         </div>
       </div>
