@@ -4,10 +4,9 @@ import Layout from "./layouts/Layout";
 import Home from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
-import DashBoard from "./pages/DashBoard";
-// import FoodDetails from "./pages/FoodDetailsPage ";
 import Signup from "./pages/Signup";
 import OrdersPage from "./pages/OrdersPage";
+import Dashboard from "./pages/DashBoard";
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
@@ -18,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> }, // Home without search
       { path: "search/:searchTerm", element: <Home /> }, // Home with search term
-      { path: "dashboard", element: <DashBoard /> },
+      { path: "dashboard", element: <Dashboard /> },
       { path: "orders", element: <OrdersPage /> },
 
 

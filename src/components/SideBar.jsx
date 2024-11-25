@@ -1,7 +1,3 @@
-
-
-
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -13,6 +9,7 @@ const Sidebar = () => {
   const { getCartItemsCount } = useCart();
 
   useEffect(() => {
+
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -44,7 +41,7 @@ const Sidebar = () => {
         <div className="text-xl font-bold mb-8">
           <Link
             to="/"
-            className="flex items-center gap-3 text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
+            className="flex items-center gap-3 text-black hover:text-indigo-500 transition-colors duration-300"
           >
             <span>Restaurant POS</span>
           </Link>
@@ -117,7 +114,7 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      {user && (
+   
         <button
           onClick={logout}
           className="flex items-center justify-center gap-2 w-full px-4 py-3 mt-auto text-white bg-red-500 hover:bg-red-600 rounded-lg transition-all duration-300"
@@ -125,7 +122,7 @@ const Sidebar = () => {
           <FaSignOutAlt className="text-lg" />
           <span>Log Out</span>
         </button>
-      )}
+    
     </aside>
   );
 };

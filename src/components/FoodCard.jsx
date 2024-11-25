@@ -8,11 +8,11 @@ const FoodCard = ({ food }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Image */}
-      <img
+      {/* <img
         src={food.imageUrl}
         alt={food.name}
         className="w-full h-48 object-cover"
-      />
+      /> */}
       {/* Details */}
       <div className="p-4">
         <h2 className="text-xl font-semibold">{food.name}</h2>
@@ -51,7 +51,7 @@ const FoodCard = ({ food }) => {
           </Link> */}
           <button
             onClick={() => addToCart(food)}
-            className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+            className="flex items-center space-x-2 bg-neutral-900 text-white px-4 py-2 rounded-lg hover:bg-neutral-700 transition duration-200"
           >
             <FaShoppingCart className="text-sm" />
             <span>Place Order  </span>

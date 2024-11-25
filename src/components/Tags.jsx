@@ -9,7 +9,7 @@ const Tags = ({ tags, selectedTag, onTagSelect }) => {
           onClick={() => onTagSelect(tag.name)}
           className={`px-4 py-2 rounded-full ${
             selectedTag === tag.name
-              ? 'bg-blue-600 text-white'
+              ? 'bg-neutral-900 text-white'
               : 'bg-gray-200 text-gray-700'
           }`}
         >
