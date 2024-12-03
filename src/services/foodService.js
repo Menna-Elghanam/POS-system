@@ -30,3 +30,5 @@ export const getById = async (foodId) => {
 export async function deleteById(foodId) {
   await axios.delete("/api/foods/" + foodId);
 }
+
+
