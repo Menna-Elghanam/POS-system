@@ -8,26 +8,26 @@ const Sidebar = () => {
   const [user, setUser] = useState(null);
   const { getCartItemsCount } = useCart();
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchUser = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) throw new Error("No token found");
+  //   const fetchUser = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token");
+  //       if (!token) throw new Error("No token found");
 
-        const response = await axios.get("http://localhost:5000/api/auth/user", {
-          headers: { Authorization: token },
-        });
+  //       const response = await axios.get("http://localhost:5000/api/auth/user", {
+  //         headers: { Authorization: token },
+  //       });
 
-        setUser(response.data.user);
-      } catch (error) {
-        console.error("Failed to fetch user info:", error);
-        setUser(null);
-      }
-    };
+  //       setUser(response.data.user);
+  //     } catch (error) {
+  //       console.error("Failed to fetch user info:", error);
+  //       setUser(null);
+  //     }
+  //   };
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
 
   const logout = () => {
     localStorage.removeItem("token"); // Remove token from localStorage
